@@ -1,0 +1,20 @@
+CREATE TABLE public.users (
+    id UUID NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    status TEXT NOT NULL,
+    _id UUID NOT NULL DEFAULT gen_random_uuid(),
+    stripe_customer_id TEXT NOT NULL,
+    email TEXT NOT NULL,
+    first_name TEXT NULL,
+    last_name TEXT NULL,
+    password TEXT NOT NULL,
+    custom_max_interactions SMALLINT NOT NULL DEFAULT '1000',
+    custom_max_file_bytes_storaged INTEGER NOT NULL DEFAULT 1073741824,
+    current_file_bytes_storaged INTEGER NOT NULL DEFAULT 0,
+    current_ai_interactions SMALLINT NOT NULL DEFAULT '0',
+    current_files_uploaded SMALLINT NOT NULL DEFAULT '0',
+    subscription_plan_id INTEGER NOT NULL DEFAULT 1,
+    CONSTRAINT users_pkey PRIMARY KEY (id),
+    CONSTRAINT users_id_fkey FOREIGN KEY (id) REFERENCES auth.users (id),
+    CONSTRAINT users_subscription_plan_id_fkey FOREIGN KEY (subscription_plan_id) REFERENCES subscription_plans (id)
+) TABLESPACE pg_default;
