@@ -1,5 +1,34 @@
+# LLMs and GPTs
+openai==0.28.1
+langchain
+
+# WebServer Components
+python-jose
+cryptography
+
+# DataBase
+supabase
+pinecone-client
+boto3
+
+# Worker Queue
+rq
+
+# Langchain Loaders
+pypdf
+tiktoken
+
+# Stripe
+stripe
+
+# Create PDFs
+reportlab
+
+# Streamlit
 altair
 numpy
 pandas
 pydeck
 streamlit
+streamlit-aggrid
+
